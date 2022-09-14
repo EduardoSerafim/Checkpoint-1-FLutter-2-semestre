@@ -1,0 +1,1 @@
+enum TipoCartao {CREDITO, DEBITO}
