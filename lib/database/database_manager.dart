@@ -79,6 +79,7 @@ class DatabaseManager {
         dataVencimento INTEGER,
         agencia INTEGER,
         banco TEXT,
+        conta INTEGER,
         codigoSeguranca INTEGER
       );
 

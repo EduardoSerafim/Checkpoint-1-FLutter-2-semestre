@@ -16,8 +16,8 @@ class CartaoRepository {
               tipoCartao: TipoCartao.values[row['tipoCartao']],
               dateVencimento: DateTime.fromMillisecondsSinceEpoch(row['dataVencimento']),
               agencia: row['agencia'],
-              //banco: row['banco'],
-             // contaBanco: row['contaBanco'],
+              banco: row['banco'],
+              conta: row['conta'],
               codigoSeguranca: row['codigoSeguranca'],
           )
         )
@@ -33,8 +33,8 @@ class CartaoRepository {
       "tipoCartao": cartao.tipoCartao.index,
       "dataVencimento": cartao.dateVencimento.millisecondsSinceEpoch,
       "agencia": cartao.agencia,
-      //"banco": cartao.banco.toString(),
-      //"contaBanco": cartao.contaBanco,
+      "banco": cartao.banco.toString(),
+      "conta": cartao.conta,
       "codigoSeguranca": cartao.codigoSeguranca,
     });
   }
@@ -54,8 +54,8 @@ class CartaoRepository {
           "tipoCartao": cartao.tipoCartao.index,
           "dataVencimento": cartao.dateVencimento.millisecondsSinceEpoch,
           "agencia": cartao.agencia,
-          //"banco": cartao.banco,
-         // "contaBanco": cartao.contaBanco,
+          "banco": cartao.banco,
+          "conta": cartao.conta,
           "codigoSeguranca": cartao.codigoSeguranca,
         },
         where: 'id = ?',

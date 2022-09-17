@@ -6,8 +6,8 @@ class Cartao {
   TipoCartao tipoCartao;
   DateTime dateVencimento;
   int agencia;
-  //String banco;
-  //int contaBanco;
+  String banco;
+  int conta;
   int codigoSeguranca;
 
   Cartao(
@@ -16,8 +16,8 @@ class Cartao {
       required this.tipoCartao,
       required this.dateVencimento,
       required this.agencia,
-     // required this.banco,
-      //required this.contaBanco,
+      required this.banco,
+      required this.conta,
       required this.codigoSeguranca});
 
     String montarNumeroCartao() {

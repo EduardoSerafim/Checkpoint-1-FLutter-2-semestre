@@ -32,8 +32,8 @@ class CartaoDetalhePage extends StatelessWidget {
               subtitle: Text(DateFormat('MM/yyyy').format(cartao.dateVencimento)),
             ),
             ListTile(
-              title: const Text('Banco'),
-              subtitle: Text("Banco"),
+              title:  const Text('Banco'),
+              subtitle: Text(cartao.banco),
             ),
             ListTile(
               title: const Text('Agência'),
@@ -41,7 +41,7 @@ class CartaoDetalhePage extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Conta'),
-              subtitle: Text("conta"),
+              subtitle: Text(cartao.conta.toString()),
             ),
             ListTile(
               title: const Text('Código de segurança'),

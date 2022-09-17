@@ -22,6 +22,7 @@ class __CartaoCadastroPageState extends State<CartaoCadastroPage> {
   final _agenciaController = TextEditingController();
   final _codigoSegurancaController = TextEditingController();
   final _bancoController = TextEditingController();
+  final _contaController = TextEditingController();
 
   TipoCartao tipoCartaoSelecionado = TipoCartao.CREDITO;
 
@@ -35,6 +36,7 @@ class __CartaoCadastroPageState extends State<CartaoCadastroPage> {
       _numeroController.text = cartao.numero.toString();
       tipoCartaoSelecionado = cartao.tipoCartao;
       _agenciaController.text = cartao.agencia.toString();
+      _contaController.text = cartao.conta.toString();
       _dataVencimentoController.text =
           DateFormat('MM/dd/yyyy').format(cartao.dateVencimento);
     }
@@ -57,9 +59,11 @@ class __CartaoCadastroPageState extends State<CartaoCadastroPage> {
                 const SizedBox(height: 20),
                 _buildCreditoDebito(),
                 const SizedBox(height: 20),
-                // _buildBanco(),
-                // const SizedBox(height: 20),
+                _buildBanco(),
+                const SizedBox(height: 20),
                 _buildAgencia(),
+                const SizedBox(height: 20),
+                _buildConta(),
                 const SizedBox(height: 20),
                 _buildCodigoSeguranca(),
                 const SizedBox(height: 20),
@@ -89,13 +93,14 @@ class __CartaoCadastroPageState extends State<CartaoCadastroPage> {
           if (isValid) {
             final numero = int.parse(_numeroController.text);
             final agencia = int.parse(_agenciaController.text);
+            final conta = int.parse(_contaController.text);
             final codigoSeguranca = int.parse(_codigoSegurancaController.text);
             final banco = _bancoController.text;
             final dataVencimento =
                 DateFormat('dd/MM/yyyy').parse(_dataVencimentoController.text);
             final cartao = Cartao(
-                //banco: banco,
-                //contaBanco: 123456,
+                banco: banco,
+                conta: conta,
                 numero: numero,
                 tipoCartao: tipoCartaoSelecionado,
                 dateVencimento: dataVencimento,
@@ -155,7 +160,7 @@ class __CartaoCadastroPageState extends State<CartaoCadastroPage> {
         hintText: 'Informe o número da agência',
         labelText: 'Agência',
         border: OutlineInputBorder(),
-        prefixIcon: Icon(Icons.account_balance),
+        prefixIcon: Icon(Icons.add_home),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -163,6 +168,26 @@ class __CartaoCadastroPageState extends State<CartaoCadastroPage> {
         }
         if (value.length != 4) {
           return 'Número da agência deve ter 4 caracteres ';
+        }
+        return null;
+      },
+    );
+  }
+  TextFormField _buildConta() {
+    return TextFormField(
+      controller: _contaController,
+      decoration: const InputDecoration(
+        hintText: 'Informe o número da conta',
+        labelText: 'Conta',
+        border: OutlineInputBorder(),
+        prefixIcon: Icon(Icons.account_balance_wallet_sharp),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Informe uma conta';
+        }
+        if (value.length != 6) {
+          return 'Número da conta deve ter 6 caracteres ';
         }
         return null;
       },

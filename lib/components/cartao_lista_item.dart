@@ -35,7 +35,7 @@ class CartaoListaItem extends StatelessWidget {
 
                   Row(
                     children: [
-                       const Text("BANCO",style:  TextStyle(fontSize: 32)),
+                       Text(cartao.banco,style:  TextStyle(fontSize: 32)),
                        const SizedBox(width: 50),
                        Text(cartao.tipoCartao == TipoCartao.DEBITO ? 'Débito' : 'Crédito', style: TextStyle(fontSize: 16),)
                     ],
